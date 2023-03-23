@@ -1,0 +1,18 @@
+
+form label {
+    width: 10%;
+    font-weight: bold;
+}
+
+textarea {
+    width: 80%;
+}
+
+input, select {
+    width: 30%;
+}
+
+input[type='submit'] {
+    width: 10%;
+}
+

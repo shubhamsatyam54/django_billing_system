@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+    <div class="container d-flex justify-content-between">
+        Showing all of available clients <a href="/client/add/">
+        <button class="btn btn-primary" type="button">Add New Client</button>
+    </a>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">GST Number</th>
+                <th scope="col">Amount Due</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.gst_number }}</td>
+                    <td>{{ item.amount_due }}</td>
+                    <td>
+                        <form method="post" id="{{ item.name }}">
+                            {% csrf_token %}
+                            <input type="hidden" id="pk" name="pk" value="{{ item.name }}"/>
+
+                            <button type="submit" title="Edit" data-placement="center" ><a href="/client/{{ item.name }}/edit" type="button"
+                                                                  title="Edit"><i
+                                    style="font-size:medium;" class="material-icons">edit</i></a></button>
+                            <button type="submit" title="Delete" data-placement="center"  ><i style="font-size:medium;color: red"
+                                                                    class="material-icons">delete</i></button>
+
+                        </form>
+                    </td>
+                    </form>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+{% endblock %}

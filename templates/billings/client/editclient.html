@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Clients | Edit{% endblock %}
+{% block content %}
+    <div class="container d-flex justify-content-between">
+        Change Client
+    </div>
+    <div class="container d-flex justify-content-between">
+        <h2> {{ title }}</h2>
+    </div>
+
+    <div class="container ">
+        <form class="well form-horizontal" method="post">
+            {% csrf_token %}
+
+
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+
+        </form>
+
+    </div>
+{% endblock %}
+

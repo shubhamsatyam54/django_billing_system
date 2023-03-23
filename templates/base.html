@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'client.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+{% block navbar %}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Zenetic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="client/">Client</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inventory/">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="purchase/">Purchase</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sales/">Sales</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <script>
+        // Get the current URL path and split it into an array
+        var pathArray = window.location.pathname.split('/');
+
+        // Get the second element in the array, which should be the current page name
+        var currentPage = pathArray[1];
+
+        // Loop through all navbar links and set the "active" class to the current page link
+        var navbarLinks = document.querySelectorAll('.navbar-nav a');
+        for (var i = 0; i < navbarLinks.length; i++) {
+            console.log(navbarLinks[i].getAttribute('href').indexOf(currentPage))
+            if (navbarLinks[i].getAttribute('href').indexOf(currentPage) !== -1) {
+                navbarLinks[i].classList.add('active');
+                break;
+            }
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>
