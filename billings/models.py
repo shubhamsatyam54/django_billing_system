@@ -87,5 +87,29 @@ class Client(models.Model):
         max_digits=10,
         decimal_places=2,
         default=0.00,
-        verbose_name='Amount due (INR)'
+        verbose_name='Amount due (INR`)'
     )
+
+    def __str__(self):
+        return self.name
+
+
+class Product(models.Model):
+    title = models.CharField(max_length=255,primary_key=True,)
+    description = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return self.title
+
+class Batch(models.Model):
+    product=models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    mfd = models.DateField(verbose_name='Manufacturing Date')
+    expdt = models.DateField(verbose_name='Expiry Date')
+    quantity = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = ('product', 'name')
+
+    def __str__(self):
+        return self.name

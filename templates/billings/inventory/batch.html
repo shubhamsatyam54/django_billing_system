@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}Clients{% endblock %}
 
 {% block content %}
     <div class="container d-flex justify-content-between">
@@ -13,8 +13,8 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">GST Number</th>
-                <th scope="col">Amount Due</th>
+                <th scope="col">Product</th>
+                <th scope="col">Manufacture Date</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -31,10 +31,9 @@
                             {% csrf_token %}
                             <input type="hidden" id="pk" name="pk" value="{{ item.name }}"/>
 
-                            <button type="button" title="Edit" data-placement="center" ><a href="/client/{{ item.name }}/edit" type="button"
+                            <button type="submit" title="Edit" data-placement="center" ><a href="/client/{{ item.name }}/edit" type="button"
                                                                   title="Edit"><i
                                     style="font-size:medium;" class="material-icons">edit</i></a></button>
-
                             <button type="submit" title="Delete" data-placement="center"  ><i style="font-size:medium;color: red"
                                                                     class="material-icons">delete</i></button>
 

@@ -36,7 +36,7 @@ class NewClientView(View):
         form = ClientNewforms(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'billings/client/client.html',)
+            return redirect('clients')
         else:
             errors = form.errors.as_json()
             return render(request, 'billings/client/addclient.html', {'form': form})
@@ -55,7 +55,6 @@ class DetailClientView(View):
 
     def post(self, request,pk):
         form = ClientEditforms(request.POST, instance=self.fetch(pk))
-
         if form.is_valid():
             form.save()
             return redirect('clients')
@@ -64,12 +63,5 @@ class DetailClientView(View):
             return render(request, 'billings/client/editclient.html', {'form': form})
 
 
-class DeleteClientView(DeleteView):
-    # specify the model you want to use
-    model = Client
 
-    # can specify success url
-    # url to redirect after successfully
-    # deleting object
-    success_url = "clients"
 
