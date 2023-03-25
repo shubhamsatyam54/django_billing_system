@@ -1,2 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Dashboard{% endblock  %}
+{% block title %} Dashboard {% endblock  %}
+{% block js %}
+
+
+
+<script>
+
+         document.title = "Dashboard";
+         var navbarLinks = document.querySelectorAll('.navbar-nav a');
+         navbarLinks[0].classList.add('active');
+
+</script>
+{% endblock %}
